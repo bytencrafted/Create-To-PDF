@@ -1,0 +1,66 @@
+name: converttopdf
+description: "Convert to PDF"
+publish_to: 'none'
+
+version: 1.1.2+6
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  image_picker: ^1.2.0
+  pdf: ^3.11.3
+  path_provider: ^2.1.5
+  share_plus: ^12.0.0
+  file_picker: ^10.3.3
+  http: ^1.5.0
+  syncfusion_flutter_pdf: ^31.1.19
+  syncfusion_officecore: ^31.1.19
+  syncfusion_flutter_pdfviewer: ^31.1.19
+  path: ^1.9.0
+  google_mobile_ads: ^5.1.0
+
+  # ▼▼ Neu: Lokalisierung + Persistenz ▼▼
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_native_splash: ^2.4.1
+  flutter_launcher_icons: ^0.14.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/splash/splash.png
+    - assets/splash/bg.png
+    - assets/icon/app_icon.png
+
+# ---------- Native Splash ----------
+flutter_native_splash:
+  color: "#121214"
+  background_image: assets/splash/bg.png
+  image: assets/splash/splash.png
+  android_12:
+    color: "#121214"
+    image: assets/splash/splash.png
+  web: false
+# -----------------------------------
+
+# ---------- App Icon ----------
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icon/app_icon.png"
+  adaptive_icon_background: "#121214"
+  adaptive_icon_foreground: "assets/icon/app_icon.png"
+  min_sdk_android: 21
+# --------------------------------
