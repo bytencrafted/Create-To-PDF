@@ -13,21 +13,29 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   image_picker: ^1.2.0
-  pdf: ^3.11.3
   path_provider: ^2.1.5
   share_plus: ^12.0.0
   file_picker: ^10.3.3
-  http: ^1.5.0
-  syncfusion_flutter_pdf: ^31.1.19
-  syncfusion_officecore: ^31.1.19
-  syncfusion_flutter_pdfviewer: ^31.1.19
   path: ^1.9.0
-  google_mobile_ads: ^5.1.0
 
-  # ▼▼ Neu: Lokalisierung + Persistenz ▼▼
+  # PDF-Engine (eine reicht – das alte `pdf`-Paket ist raus)
+  syncfusion_flutter_pdf: ^31.1.19
+  syncfusion_flutter_pdfviewer: ^31.1.19
+
+  # Lokalisierung + Persistenz
   flutter_localizations:
     sdk: flutter
   shared_preferences: ^2.3.2
+
+  # ▼ ENTFERNT (waren toter Code / nicht verdrahtet):
+  #   pdf: ^3.11.3              -> PdfService wurde nie aufgerufen
+  #   http: ^1.5.0             -> nur von WordConvertService genutzt (entfernt)
+  #   syncfusion_officecore    -> nur für DOCX gedacht, nie eingebunden
+  #
+  # ▼ google_mobile_ads: Im gezeigten Dart-Code wird nichts initialisiert.
+  #   Falls du AdMob aktuell NICHT nutzt, raus damit (spart Größe + Permissions).
+  #   Falls doch (native Konfig), wieder einkommentieren:
+  # google_mobile_ads: ^5.1.0
 
 dev_dependencies:
   flutter_test:

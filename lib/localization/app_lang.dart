@@ -12,7 +12,6 @@ class AppLangController extends ChangeNotifier {
   Locale get locale => _locale;
   bool get initialized => _initialized;
 
-  /// Wurde bereits eine Sprache bewusst gewählt?
   bool get hasUserChoice => _prefs?.containsKey(_kCodeKey) ?? false;
 
   Future<void> init() async {
@@ -21,7 +20,7 @@ class AppLangController extends ChangeNotifier {
     if (code != null && code.isNotEmpty) {
       _locale = Locale(code);
     } else {
-      _locale = const Locale('de'); // Default
+      _locale = const Locale('de');
     }
     _initialized = true;
     notifyListeners();
@@ -34,7 +33,6 @@ class AppLangController extends ChangeNotifier {
     notifyListeners();
   }
 
-  // --- Übersetzungen ---
   static const Map<String, Map<String, String>> _dict = {
     'de': {
       'app_title': 'Convert to PDF',
@@ -45,41 +43,75 @@ class AppLangController extends ChangeNotifier {
       'english': 'Englisch',
       'french': 'Französisch',
       'portuguese': 'Portugiesisch',
-
       'no_items': 'Noch keine Dateien.\nFüge Bilder oder PDFs über die Buttons hinzu.',
       'camera': 'Kamera',
       'gallery': 'Galerie',
       'pdf': 'PDF',
-      'pdf_tools': 'PDF-Tools',
-
+      'pdf_tools': 'Werkzeuge',
       'files': 'Dateien',
+      'options': 'Optionen',
       'select_images': 'Bilder auswählen',
       'images_hint': 'JPG, PNG, HEIC, WebP …',
       'select_pdfs': 'PDF(s) auswählen',
       'pdfs_hint': 'Eine oder mehrere PDFs laden/zusammenführen',
-
       'share': 'Teilen',
       'edit': 'Bearbeiten',
       'password': 'Passwort',
       'reorder': 'Reihenfolge',
       'delete_pages': 'Seiten löschen',
-      'compress': 'Komprimieren',
+      'compress': 'Optimieren',
       'header_footer': 'Kopf/Fuß',
       'done': 'Fertig',
-
       'page_size': 'Seitengröße',
       'orientation': 'Ausrichtung',
       'portrait': 'Hochformat',
       'landscape': 'Querformat',
       'margin_mm': 'Rand (mm)',
       'file_name_optional': 'Dateiname (optional)',
-
-      // Vorschau
       'preview': 'Vorschau',
       'close': 'Schließen',
-
-      // NEU für Undo
       'undo': 'Rückgängig',
+      'ok': 'OK',
+      'cancel': 'Abbrechen',
+      'yes': 'Ja',
+      'no': 'Nein',
+      'apply': 'Übernehmen',
+      'select_all': 'Alle',
+      'clear': 'Leeren',
+      'no_selection': 'Keine Elemente ausgewählt.',
+      'nothing_selected': 'Nichts ausgewählt.',
+      'generating_pdf': 'PDF wird erzeugt',
+      'please_wait': 'Einen Moment bitte …',
+      'loading_images': 'Bilder werden geladen …',
+      'preview_failed': 'Vorschau fehlgeschlagen',
+      'error': 'Fehler',
+      'out_of_memory': 'Speicher voll. Versuche weniger Bilder.',
+      'generated_pdf_text': 'Mein erzeugtes PDF',
+      'set_password': 'Passwort setzen',
+      'user_password': 'User-Passwort',
+      'owner_password_optional': 'Owner-Passwort (optional)',
+      'password_set': 'Passwort gesetzt.',
+      'encryption_failed': 'Verschlüsselung fehlgeschlagen',
+      'reorder_pages_title': 'Reihenfolge ändern',
+      'drag_to_reorder': 'Zum Sortieren ziehen, dann übernehmen.',
+      'reorder_done': 'Seitenreihenfolge geändert.',
+      'reorder_failed': 'Reorder fehlgeschlagen',
+      'delete_pages_title': 'Seiten löschen',
+      'tap_to_select_delete': 'Seiten zum Löschen antippen.',
+      'pages_deleted': 'Seiten gelöscht.',
+      'delete_failed': 'Löschen fehlgeschlagen',
+      'pdf_compressed': 'PDF optimiert.',
+      'compress_failed': 'Optimierung fehlgeschlagen',
+      'header_title': 'Kopfzeile',
+      'header_label': 'Text oben (optional)',
+      'footer_title': 'Fußzeile',
+      'footer_label': 'Text unten links (optional)',
+      'show_page_numbers_q': 'Seitenzahlen anzeigen?',
+      'show_page_numbers_desc': 'Soll „Seite X von Y“ in der Fußzeile stehen?',
+      'header_footer_set': 'Kopf-/Fußzeilen gesetzt.',
+      'header_footer_failed': 'Kopf-/Fußzeile fehlgeschlagen',
+      'page_x_of_y': 'Seite {0} von {1}',
+      'page_label': 'Seite',
     },
     'en': {
       'app_title': 'Convert to PDF',
@@ -90,40 +122,75 @@ class AppLangController extends ChangeNotifier {
       'english': 'English',
       'french': 'French',
       'portuguese': 'Portuguese',
-
       'no_items': 'No files yet.\nAdd images or PDFs using the buttons.',
       'camera': 'Camera',
       'gallery': 'Gallery',
       'pdf': 'PDF',
-      'pdf_tools': 'PDF Tools',
-
+      'pdf_tools': 'Tools',
       'files': 'Files',
+      'options': 'Options',
       'select_images': 'Select images',
       'images_hint': 'JPG, PNG, HEIC, WebP …',
       'select_pdfs': 'Select PDF(s)',
       'pdfs_hint': 'Load/merge one or more PDFs',
-
       'share': 'Share',
       'edit': 'Edit',
       'password': 'Password',
       'reorder': 'Reorder',
       'delete_pages': 'Delete pages',
-      'compress': 'Compress',
+      'compress': 'Optimize',
       'header_footer': 'Header/Footer',
       'done': 'Done',
-
       'page_size': 'Page size',
       'orientation': 'Orientation',
       'portrait': 'Portrait',
       'landscape': 'Landscape',
       'margin_mm': 'Margin (mm)',
       'file_name_optional': 'Filename (optional)',
-
       'preview': 'Preview',
       'close': 'Close',
-
-      // NEW
       'undo': 'Undo',
+      'ok': 'OK',
+      'cancel': 'Cancel',
+      'yes': 'Yes',
+      'no': 'No',
+      'apply': 'Apply',
+      'select_all': 'All',
+      'clear': 'Clear',
+      'no_selection': 'No items selected.',
+      'nothing_selected': 'Nothing selected.',
+      'generating_pdf': 'Creating PDF',
+      'please_wait': 'This will only take a moment …',
+      'loading_images': 'Loading images …',
+      'preview_failed': 'Preview failed',
+      'error': 'Error',
+      'out_of_memory': 'Out of memory. Try fewer images.',
+      'generated_pdf_text': 'My generated PDF',
+      'set_password': 'Set password',
+      'user_password': 'User password',
+      'owner_password_optional': 'Owner password (optional)',
+      'password_set': 'Password set.',
+      'encryption_failed': 'Encryption failed',
+      'reorder_pages_title': 'Reorder pages',
+      'drag_to_reorder': 'Drag to reorder, then apply.',
+      'reorder_done': 'Page order changed.',
+      'reorder_failed': 'Reorder failed',
+      'delete_pages_title': 'Delete pages',
+      'tap_to_select_delete': 'Tap pages to delete.',
+      'pages_deleted': 'Pages deleted.',
+      'delete_failed': 'Delete failed',
+      'pdf_compressed': 'PDF optimized.',
+      'compress_failed': 'Optimization failed',
+      'header_title': 'Header',
+      'header_label': 'Top text (optional)',
+      'footer_title': 'Footer',
+      'footer_label': 'Bottom-left text (optional)',
+      'show_page_numbers_q': 'Show page numbers?',
+      'show_page_numbers_desc': 'Add “Page X of Y” to the footer?',
+      'header_footer_set': 'Header/footer set.',
+      'header_footer_failed': 'Header/footer failed',
+      'page_x_of_y': 'Page {0} of {1}',
+      'page_label': 'Page',
     },
     'fr': {
       'app_title': 'Convertir en PDF',
@@ -134,40 +201,75 @@ class AppLangController extends ChangeNotifier {
       'english': 'Anglais',
       'french': 'Français',
       'portuguese': 'Portugais',
-
       'no_items': 'Aucun fichier.\nAjoutez des images ou des PDF via les boutons.',
       'camera': 'Caméra',
       'gallery': 'Galerie',
       'pdf': 'PDF',
-      'pdf_tools': 'Outils PDF',
-
+      'pdf_tools': 'Outils',
       'files': 'Fichiers',
+      'options': 'Options',
       'select_images': 'Sélectionner des images',
       'images_hint': 'JPG, PNG, HEIC, WebP …',
       'select_pdfs': 'Sélectionner des PDF',
       'pdfs_hint': 'Charger/fusionner un ou plusieurs PDF',
-
       'share': 'Partager',
       'edit': 'Modifier',
       'password': 'Mot de passe',
       'reorder': 'Réorganiser',
       'delete_pages': 'Supprimer des pages',
-      'compress': 'Compresser',
-      'header_footer': 'En-tête/Pied de page',
+      'compress': 'Optimiser',
+      'header_footer': 'En-tête/Pied',
       'done': 'Terminer',
-
       'page_size': 'Taille de page',
       'orientation': 'Orientation',
       'portrait': 'Portrait',
       'landscape': 'Paysage',
       'margin_mm': 'Marge (mm)',
       'file_name_optional': 'Nom de fichier (facultatif)',
-
       'preview': 'Aperçu',
       'close': 'Fermer',
-
-      // NOUVEAU
       'undo': 'Annuler',
+      'ok': 'OK',
+      'cancel': 'Annuler',
+      'yes': 'Oui',
+      'no': 'Non',
+      'apply': 'Appliquer',
+      'select_all': 'Tout',
+      'clear': 'Effacer',
+      'no_selection': 'Aucun élément sélectionné.',
+      'nothing_selected': 'Rien de sélectionné.',
+      'generating_pdf': 'Création du PDF',
+      'please_wait': 'Un instant, s’il vous plaît …',
+      'loading_images': 'Chargement des images …',
+      'preview_failed': 'Échec de l’aperçu',
+      'error': 'Erreur',
+      'out_of_memory': 'Mémoire pleine. Essayez avec moins d’images.',
+      'generated_pdf_text': 'Mon PDF généré',
+      'set_password': 'Définir le mot de passe',
+      'user_password': 'Mot de passe utilisateur',
+      'owner_password_optional': 'Mot de passe propriétaire (facultatif)',
+      'password_set': 'Mot de passe défini.',
+      'encryption_failed': 'Échec du chiffrement',
+      'reorder_pages_title': 'Réorganiser les pages',
+      'drag_to_reorder': 'Glissez pour réorganiser, puis appliquez.',
+      'reorder_done': 'Ordre des pages modifié.',
+      'reorder_failed': 'Échec de la réorganisation',
+      'delete_pages_title': 'Supprimer des pages',
+      'tap_to_select_delete': 'Touchez les pages à supprimer.',
+      'pages_deleted': 'Pages supprimées.',
+      'delete_failed': 'Échec de la suppression',
+      'pdf_compressed': 'PDF optimisé.',
+      'compress_failed': 'Échec de l’optimisation',
+      'header_title': 'En-tête',
+      'header_label': 'Texte en haut (facultatif)',
+      'footer_title': 'Pied de page',
+      'footer_label': 'Texte en bas à gauche (facultatif)',
+      'show_page_numbers_q': 'Afficher les numéros de page ?',
+      'show_page_numbers_desc': 'Ajouter « Page X sur Y » au pied de page ?',
+      'header_footer_set': 'En-tête/pied de page définis.',
+      'header_footer_failed': 'Échec de l’en-tête/pied de page',
+      'page_x_of_y': 'Page {0} sur {1}',
+      'page_label': 'Page',
     },
     'pt': {
       'app_title': 'Converter para PDF',
@@ -178,51 +280,93 @@ class AppLangController extends ChangeNotifier {
       'english': 'Inglês',
       'french': 'Francês',
       'portuguese': 'Português',
-
       'no_items': 'Nenhum ficheiro.\nAdicione imagens ou PDFs com os botões.',
       'camera': 'Câmara',
       'gallery': 'Galeria',
       'pdf': 'PDF',
-      'pdf_tools': 'Ferramentas PDF',
-
+      'pdf_tools': 'Ferramentas',
       'files': 'Ficheiros',
+      'options': 'Opções',
       'select_images': 'Selecionar imagens',
       'images_hint': 'JPG, PNG, HEIC, WebP …',
       'select_pdfs': 'Selecionar PDF(s)',
       'pdfs_hint': 'Carregar/unir um ou mais PDFs',
-
       'share': 'Partilhar',
       'edit': 'Editar',
       'password': 'Palavra-passe',
       'reorder': 'Reordenar',
       'delete_pages': 'Eliminar páginas',
-      'compress': 'Comprimir',
+      'compress': 'Otimizar',
       'header_footer': 'Cabeçalho/Rodapé',
       'done': 'Concluir',
-
       'page_size': 'Tamanho da página',
       'orientation': 'Orientação',
       'portrait': 'Retrato',
       'landscape': 'Paisagem',
       'margin_mm': 'Margem (mm)',
       'file_name_optional': 'Nome do ficheiro (opcional)',
-
       'preview': 'Pré-visualização',
       'close': 'Fechar',
-
-      // NOVO
       'undo': 'Anular',
+      'ok': 'OK',
+      'cancel': 'Cancelar',
+      'yes': 'Sim',
+      'no': 'Não',
+      'apply': 'Aplicar',
+      'select_all': 'Tudo',
+      'clear': 'Limpar',
+      'no_selection': 'Nenhum elemento selecionado.',
+      'nothing_selected': 'Nada selecionado.',
+      'generating_pdf': 'A criar PDF',
+      'please_wait': 'Só um momento …',
+      'loading_images': 'A carregar imagens …',
+      'preview_failed': 'Falha na pré-visualização',
+      'error': 'Erro',
+      'out_of_memory': 'Memória cheia. Tente menos imagens.',
+      'generated_pdf_text': 'O meu PDF gerado',
+      'set_password': 'Definir palavra-passe',
+      'user_password': 'Palavra-passe de utilizador',
+      'owner_password_optional': 'Palavra-passe de proprietário (opcional)',
+      'password_set': 'Palavra-passe definida.',
+      'encryption_failed': 'Falha na encriptação',
+      'reorder_pages_title': 'Reordenar páginas',
+      'drag_to_reorder': 'Arraste para reordenar e aplique.',
+      'reorder_done': 'Ordem das páginas alterada.',
+      'reorder_failed': 'Falha ao reordenar',
+      'delete_pages_title': 'Eliminar páginas',
+      'tap_to_select_delete': 'Toque nas páginas a eliminar.',
+      'pages_deleted': 'Páginas eliminadas.',
+      'delete_failed': 'Falha ao eliminar',
+      'pdf_compressed': 'PDF otimizado.',
+      'compress_failed': 'Falha na otimização',
+      'header_title': 'Cabeçalho',
+      'header_label': 'Texto em cima (opcional)',
+      'footer_title': 'Rodapé',
+      'footer_label': 'Texto em baixo à esquerda (opcional)',
+      'show_page_numbers_q': 'Mostrar números de página?',
+      'show_page_numbers_desc': 'Adicionar “Página X de Y” ao rodapé?',
+      'header_footer_set': 'Cabeçalho/rodapé definidos.',
+      'header_footer_failed': 'Falha no cabeçalho/rodapé',
+      'page_x_of_y': 'Página {0} de {1}',
+      'page_label': 'Página',
     },
   };
 
   String t(String key) {
     final code = _locale.languageCode;
     final table = _dict[code] ?? _dict['en']!;
-    return table[key] ?? key;
+    return table[key] ?? _dict['en']![key] ?? key;
+  }
+
+  String f(String key, List<Object> args) {
+    var s = t(key);
+    for (var i = 0; i < args.length; i++) {
+      s = s.replaceAll('{$i}', '${args[i]}');
+    }
+    return s;
   }
 }
 
-/// InheritedWidget, um den Controller bequemer aus dem BuildContext zu holen.
 class AppLang extends InheritedWidget {
   final AppLangController controller;
 
@@ -239,5 +383,6 @@ class AppLang extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(covariant AppLang oldWidget) => controller != oldWidget.controller;
+  bool updateShouldNotify(covariant AppLang oldWidget) =>
+      controller != oldWidget.controller;
 }
