@@ -2,7 +2,7 @@ name: converttopdf
 description: "Convert to PDF"
 publish_to: 'none'
 
-version: 1.1.2+6
+version: 1.2.0+7
 
 environment:
   sdk: ^3.8.1
